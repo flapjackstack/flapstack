@@ -52,7 +52,6 @@ router.get("/orgs/:id/repos", async (req, res, next) => {
             type: "oauth",
             token
         });
-        console.log("params", req.params);
         const org = req.params.id;
         const result = await octokit.repos.getForOrg({ org });
         res.json(result);

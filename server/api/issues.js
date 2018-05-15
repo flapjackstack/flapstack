@@ -22,7 +22,6 @@ router.get("/", async (req, res, next) => {
  * need to use assignee method for issue
  */
 router.post("/", async (req, res, next) => {
-  console.log("req.body", req.body);
   try {
     // returns created issue object
     const response = await req.octokit.issues.create({

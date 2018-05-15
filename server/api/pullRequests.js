@@ -21,8 +21,6 @@ router.get("/", async (req, res, next) => {
  * return all pull requests for a project
  */
 router.put("/", async (req, res, next) => {
-  console.log("inside pull request PUT route");
-  console.log("req body in PUT pullRequest", req.body);
   try {
     const response = await req.octokit.pullRequests.update({
       owner: req.repoOwner,

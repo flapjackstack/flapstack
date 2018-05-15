@@ -54,7 +54,6 @@ router.put("/", async (req, res, next) => {
         returning: true
       }
     );
-    console.log("response from put ", response[1]);
     res.json(response[1]);
   } catch (err) {
     next(err);

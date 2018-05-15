@@ -4,8 +4,6 @@ module.exports = router;
 
 router.post("/", async (req, res, next) => {
   try {
-    console.log("getting into projects post route ", req.body);
-    console.log("req user in post project ", req.user);
     const project = await Project.findOrCreate({
       where: {
         owner: req.body.owner,
