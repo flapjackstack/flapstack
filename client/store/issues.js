@@ -9,6 +9,7 @@ const EDIT_ISSUE = "EDIT_ISSUE";
 const CREATE_ISSUE = "CREATE_ISSUE";
 const ADD_LABEL_TO_ISSUE = "ADD_LABEL_TO_ISSUE";
 const REMOVE_LABEL_FROM_ISSUE = "REMOVE_LABEL_FROM_ISSUE";
+const RESET = "RESET";
 
 // Filter
 const SET_ISSUE_FILTER = "SET_ISSUE_FILTER";
@@ -21,6 +22,7 @@ const edit = issue => ({ type: EDIT_ISSUE, issue });
 const create = issue => ({ type: CREATE_ISSUE, issue });
 const addLabelToIssue = (issueId, labels) => ({ type: ADD_LABEL_TO_ISSUE, issueId, labels });
 const removeLabelFromIssue = (issueId, newLabels) => ({ type: REMOVE_LABEL_FROM_ISSUE, issueId, newLabels });
+const reset = () => ({ type: RESET });
 
 export const setIssueFilter = filter => {
   return { type: SET_ISSUE_FILTER, filter };
@@ -54,6 +56,9 @@ const issueListReducer = (state = [], action) => {
         if (action.issueId === issue.id) return { ...issue, labels: action.newLabels };
         return issue;
       });
+
+    case RESET:
+      return undefined;
 
     default:
       return state;

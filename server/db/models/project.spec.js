@@ -7,14 +7,13 @@ describe("Project Model", () => {
         return db.sync({ force: true });
     });
 
-    describe("Allow Null tests", () => {
+    describe("Null Value Tests", () => {
         it("Will not create a project without being passed both an owner and a repository", async () => {
             try {
                 await Project.create();
             } catch (err) {
                 expect(err.message).to.be.equal("notNull Violation: project.owner cannot be null,\nnotNull Violation: project.repository cannot be null");
             }
-
         });
 
         it("Will not create a project without being passed an owner", async () => {

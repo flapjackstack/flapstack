@@ -1,6 +1,6 @@
 const { expect } = require("chai");
 const db = require("../db");
-const Issue = db.model("issue");
+const PullRequest = db.model("pull-request");
 
 describe("Issue model", () => {
     beforeEach(() => {
@@ -8,11 +8,11 @@ describe("Issue model", () => {
     });
 
     describe("Null Value Tests", () => {
-        it("Will not create an issue without being passed an issue number", async () => {
+        it("Will not create a pull request without being passed a number", async () => {
             try {
-                await Issue.create();
+                await PullRequest.create();
             } catch (err) {
-                expect(err.message).to.be.equal("notNull Violation: issue.number cannot be null");
+                expect(err.message).to.be.equal("notNull Violation: pull-request.number cannot be null");
             }
         });
     });
