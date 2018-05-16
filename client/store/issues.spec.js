@@ -18,17 +18,12 @@ describe("Issue Reducer", () => {
     const testLabel1 = { id: 1, name: "label1" };
     const testLabel2 = { id: 2, name: "label2" };
 
-    const initState = {
-        issueList: [
-            {
-                id: 1,
-                owner: "me",
-                repo: "test",
-                title: "issue1",
-                labels: [testLabel1]
-            },
-        ],
-        filter: {}
+    const testIssue0 = {
+        id: 1,
+        owner: "me",
+        repo: "test",
+        title: "issue1",
+        labels: [testLabel1]
     };
 
     const testIssue1 = {
@@ -47,8 +42,31 @@ describe("Issue Reducer", () => {
         labels: [testLabel1]
     };
 
-    it("Returns all issues on state", () => {
-        expect(reducer(initState, load)).to.deep.equal(initState);
+    const initState = {
+        issueList: [testIssue0],
+        filter: {}
+    };
+
+
+    it("Loads issues onto state", () => {
+        expect(reducer({}, load([testIssue0]))).to.deep.equal({
+            filter: {},
+            issueList: [
+                {
+                    id: 1,
+                    labels: [
+                        {
+                            id: 1,
+                            name: "label1",
+                        }
+                    ],
+                    owner: "me",
+                    repo: "test",
+                    title: "issue1"
+                }
+            ]
+
+        });
     });
 
     it("Adds an issue to state", () => {
@@ -89,7 +107,7 @@ describe("Issue Reducer", () => {
     });
 
     /**
-     * This hilariously doesn't add on new labels to the existing labels.  Instead, it replaces all the old labels with the new labels
+     * This hilariously doesn't add on new labels to the existing labels.  Instead, it replaces all the old labels with the passed-in labels
      */
     it("Adds a label to an issue", () => {
         expect(reducer(initState, addLabelToIssue(1, [testLabel1, testLabel2]))).to.deep.equal({
@@ -106,9 +124,10 @@ describe("Issue Reducer", () => {
         });
     });
 
+    /**
+     * This hilariously doesn't remove existing labels.  Instead, it replaces all the old labels with the passed-in labels
+     */
     it("Removes a label from an issue", () => {
-
-
         expect(reducer(initState, removeLabelFromIssue(1, []))).to.deep.equal({
             issueList: [
                 {
