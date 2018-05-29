@@ -5,18 +5,42 @@ Built as a group capstone project at Fullstack Academy.
 
 # Built With
 PostgreSQL - Database used for all user and trip information
+
+
 React - Frontend framework
+
+
 React RnD - Framework for designing frontend wireframes
+
+
 React STORM Diagrams - Framework for schema designer
+
+
 React Trello - Framework for agile board
+
+
 Redux - State management
+
+
 Node.js - JS runtime on the backend
+
+
 Express.js - Web app framework
+
+
 Socket.io- For real-time interaction
+
+
 Octokit- Github Integration
+
+
 Chai- Testing framework
 
 # Team Members
 Jasmine Munoz - jmunoz1992
+
+
 Olivia Lam - livilammister
+
+
 Victor Barrancos - vbarrancos
